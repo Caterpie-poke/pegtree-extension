@@ -1,0 +1,111 @@
+{
+    "name": "pegtree",
+    "displayName": "PEGTree Extension",
+    "description": "Extension for PEGTree",
+    "publisher": "Caterpie-poke",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.14.0"
+    },
+    "categories": [
+        "Language Packs"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Caterpie-poke/pegtree-extension"
+    },
+    "icon": "images/pegtree.png",
+    "activationEvents": [
+        "onCommand:extension.genViewer"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "tpeg",
+                "aliases": [
+                    "TPEG",
+                    "tpeg"
+                ],
+                "extensions": [
+                    ".tpeg",
+                    ".gpeg"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "tpeg",
+                "scopeName": "source.tpeg",
+                "path": "./syntaxes/tpeg.tmLanguage.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.genViewer",
+                "title": "PEGTree Viewer",
+                "icon": {
+                    "light": "images/icon_light.png",
+                    "dark": "images/icon_dark.png"
+                }
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "when": "resourceLangId == tpeg",
+                    "command": "extension.genViewer",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "PEGTree",
+            "properties": {
+                "pegtree.hoge": {
+                    "type": "string",
+                    "default": "hello",
+                    "description": "property sample"
+                },
+                "pegtree-viewer.dotConfig": {
+                    "type": "object",
+                    "default": {
+                        "graph": {
+                            "charset": "UTF-8",
+                            "label": "$input_text",
+                            "labelloc": "t",
+                            "fontname": "MS Gothic",
+                            "fontcolor": "#252525",
+                            "fontsize": "18"
+                        },
+                        "edge": {
+                            "dir": "none",
+                            "fontname": "MS Gothic",
+                            "fontcolor": "#252525",
+                            "fontsize": "12"
+                        },
+                        "node": {
+                            "shape": "box",
+                            "style": "rounded,filled",
+                            "color": "#3c3c3c",
+                            "fillcolor": "#f5f5f5",
+                            "fontname": "MS Gothic",
+                            "fontsize": "16",
+                            "fontcolor": "#252525"
+                        },
+                        "nodeOfTerminal": {
+                            "fillcolor": "red"
+                        }
+                    },
+                    "description": "fugafuga"
+                }
+            }
+        }
+    },
+    "dependencies": {
+        "dom-parser": "^0.1.6",
+        "pegtree": "^0.9.8",
+        "viz.js": "^2.1.2"
+    }
+}
